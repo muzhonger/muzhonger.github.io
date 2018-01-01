@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://muzhonger.github.io/sitemap.xml
+Sitemap: http://muzhonger.github.io/sitemap.xml
