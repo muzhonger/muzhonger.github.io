@@ -6,10 +6,19 @@
     <description>Recent content on MUZHONGER</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 01 Jan 2018 22:40:41 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jan 2018 22:40:41 +0800</lastBuildDate>
     
 	<atom:link href="https://muzhonger.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>如何使用Hugo创建网站</title>
+      <link>https://muzhonger.github.io/post/how-to-create-website-with-hugo/</link>
+      <pubDate>Tue, 02 Jan 2018 22:40:41 +0800</pubDate>
+      
+      <guid>https://muzhonger.github.io/post/how-to-create-website-with-hugo/</guid>
+      <description>Hugo是一个方便快捷的网站静态页面生成工具，通过该工具，可以将MARKDOWN书写的页面转化为网站页面。 Hugo入门 安装 如下已macOS上</description>
+    </item>
     
     <item>
       <title>2018新年愿望清单</title>
@@ -17,7 +26,7 @@
       <pubDate>Mon, 01 Jan 2018 22:40:41 +0800</pubDate>
       
       <guid>https://muzhonger.github.io/post/wishes-for-the-new-year-2018/</guid>
-      <description>新年愿望 开始写网络日志 每个月看一本书 考个ACP认证 学习微信平台相关技术</description>
+      <description>新年愿望 每周写一篇网络日志 每周健身一次 每月看一本书 《金字塔原理》 《凤凰项目》 《番茄工作法图解》 《自控力》 《思维导图》 《时间简史》 《学会提问》</description>
     </item>
     
     <item>

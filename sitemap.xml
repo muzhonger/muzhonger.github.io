@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://muzhonger.github.io/post/how-to-create-website-with-hugo/</loc>
+    <lastmod>2018-01-02T22:40:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://muzhonger.github.io/post/wishes-for-the-new-year-2018/</loc>
     <lastmod>2018-01-01T22:40:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -18,26 +25,42 @@
   
   <url>
     <loc>https://muzhonger.github.io/categories/</loc>
+    <lastmod>2018-01-02T22:40:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://muzhonger.github.io/categories/</loc>
+    <lastmod>2018-01-02T22:40:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://muzhonger.github.io/tags/hugo/</loc>
+    <lastmod>2018-01-02T22:40:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://muzhonger.github.io/</loc>
-    <lastmod>2018-01-01T22:40:41+08:00</lastmod>
+    <lastmod>2018-01-02T22:40:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://muzhonger.github.io/post/</loc>
-    <lastmod>2018-01-01T22:40:41+08:00</lastmod>
+    <lastmod>2018-01-02T22:40:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://muzhonger.github.io/tags/</loc>
+    <lastmod>2018-01-02T22:40:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
