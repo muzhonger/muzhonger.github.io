@@ -138,6 +138,7 @@
 							var _answer = $(this);
 							var _question = $('.question');
 							var result = $('.question .result').data('result');
+							var delay = 100;
 							console.log(result);
 							$('.question .result').html(result);
 							if(_answer.html() == result) {
@@ -148,13 +149,14 @@
 								_answer.addClass('wrong');
 								_question.addClass('wrong');
 								_this.wrongCount++;
+								delay = 2000;
 							}
 							
 							if(_this.rightCount + _this.wrongCount < _this.totalCount) {
 								setTimeout(function() {
 									$('.question, .answer li').removeClass('right').removeClass('wrong');
 									_this.question = _this.generateQuestion();
-								}, 1000);
+								}, delay);
 							} else {
 								_this.endTime = new Date().getTime();
 								var totalTime = (_this.endTime - _this.startTime) / 1000;
