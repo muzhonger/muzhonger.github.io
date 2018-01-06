@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  	<meta name="renderer" content="webkit" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<meta name="theme-color" content="#f8f5ec" />
+	<meta name="msapplication-navbutton-color" content="#f8f5ec">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+	<script src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+  		integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  		crossorigin="anonymous"></script>
+	<title></title>
+
+	<style>
+		.welcome {
+			font-size: 100px;
+			widows: 100%;
+			height: 100%;
+			color: red;
+			margin-top: 50%;
+			text-align: center;
+		}
+
+		.question span {
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			padding: 0;
+			margin: 0;
+			font-size: 50px;
+			text-align: center;
+		}
+
+		.question.right {
+			color: green;
+		}
+
+		.question.wrong {
+			color: red;
+		}
+
+		.answer {
+			font-size: 30px; 
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+			text-align: center;
+		}
+
+		.answer li {
+			float: left;
+			width: 32.75%;
+			height: px;	
+			text-align: center;
+			border: 1px solid #fff;
+			border-radius: 5px;
+			background-color: gray;
+		}
+
+		.answer li.right {
+			color: #fff;
+			background-color: green;
+		}
+
+		.answer li.wrong {
+			color: #fff;
+			background-color: red;
+		}
+
+
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var test = {
+				totalCount: 5,				// questin count
+				totalTime: 5 * 60,			// second;
+				maxResult: 20,
+				minResult: 0,
+				operators: ['+', '-'],
+				question: {},
+				startTime: 0,
+				endTime: 0,
+				rightCount: 0,
+				wrongCount: 0,
+				answerDisabled: false,
+				init: function() {
+					this.startTime = 0;
+					this.endTime = 0;
+					this.rightCount = 0;
+					this.wrongCount = 0;
+					this.readyGo();
+					this.initAnswer();
+				},
+				readyGo: function() {
+					var _this = this;
+					// var counter = 0;
+					// var readyGo = setInterval(function () {
+					// 	 if(counter === 0) {
+					// 	 	$('.welcome').hide();
+					// 	 	$('.test').show();
+					// 	 	clearInterval(readyGo);
+					// 	 	_this.startTime = new Date().getTime();
+					// 	 	_this.question = _this.generateQuestion();
+					// 	 } else {
+					// 	 	$('.welcome').html(counter);
+					// 	 	counter--;				 
+					// 	 }
+					// }, 1000);
+					$('.welcome').html('点击打开试卷').show();
+					$('.test').hide();
+					$('.welcome').on('click', function(event) {
+						$('.welcome').hide();
+						$('.test').show();
+						_this.startTime = new Date().getTime();
+						_this.generateQuestion();
+					});
+
+				},
+				initAnswer: function() {
+					var _this = this;
+					$('.answer').empty();
+					for(var i=0; i<= _this.maxResult; i ++) {
+						console.log(i)
+						var $li = $('<li>').html(i).on('click', function() {
+							if(_this.answerDisabled == true) return;
+							_this.answerDisabled = true;
+							var _answer = $(this);
+							var _question = $('.question');
+							var result = $('.question .result').data('result');
+							console.log(result);
+							$('.question .result').html(result);
+							if(_answer.html() == result) {
+								_answer.addClass('right');
+								_question.addClass('right');
+								_this.rightCount++;
+							} else {
+								_answer.addClass('wrong');
+								_question.addClass('wrong');
+								_this.wrongCount++;
+							}
+							
+							if(_this.rightCount + _this.wrongCount < _this.totalCount) {
+								setTimeout(function() {
+									$('.question, .answer li').removeClass('right').removeClass('wrong');
+									_this.question = _this.generateQuestion();
+								}, 1000);
+							} else {
+								_this.endTime = new Date().getTime();
+								var totalTime = (_this.endTime - _this.startTime) / 1000;
+								alert('回答正确：' + _this.rightCount + '\n回答错误：' + _this.wrongCount + '\n用时：' + Math.ceil(totalTime) + '秒');
+								_this.init();
+							}
+
+						});
+						$('.answer').append($li);
+					}					
+				},
+				generateQuestion: function () {
+					this.answerDisabled = false;
+					var maxResult = this.maxResult;
+					var minResult = this.minResult;
+					var firstNum, secondNum, result;
+					var a = Math.round(Math.random() * (this.operators.length - 1));
+					console.log('a=' + a);
+					var operator = this.operators[a];
+					if(operator === '+') {
+						firstNum = Math.round(Math.random() * (maxResult));
+						console.log('firstNum=' + firstNum);
+						secondNum = Math.round(Math.random() * (maxResult - firstNum));
+						console.log('secondNum=' + secondNum);
+						result = firstNum + secondNum;
+					} else if (operator === '-') {
+						firstNum = Math.round(Math.random() * (maxResult));
+						console.log('firstNum=' + firstNum);
+						secondNum = Math.round(Math.random() * (firstNum));
+						console.log('secondNum=' + secondNum);
+						result = firstNum - secondNum;
+					}
+					$('.question .first-number').html(firstNum);
+					$('.question .second-number').html(secondNum);
+					$('.question .operator').html(operator);
+					$('.question .result').html('?');
+					$('.question .result').data('result', result);
+					return {
+						operator: operator,
+						firstNum: firstNum,
+						secondNum: secondNum,
+						result: result
+					}
+				}
+
+			};
+
+			test.init();
+		});
+	</script>
+
+</head>
+<body>
+	<div class="welcome"></div>
+	<div class="test" style="display: none;">
+		<h1>问题：</h1>
+		<div class="question">
+			<span class="first-number"></span>
+			<span class="operator">+</span>
+			<span class="second-number"></span>
+			<span class="equal">=</span>
+			<span class="result"></span>
+		</div>
+		<h1>答案：</h1>
+		<ul class="answer">
+		</ul>
+	</div>
+	<div class="report">
+		
+	</div>
+</body>
+</html>
