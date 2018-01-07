@@ -61,6 +61,7 @@
 		}
 
 		.answer li {
+			display: none;
 			float: left;
 			width: 32.75%;
 			height: 50px;	
@@ -199,6 +200,17 @@
 					$('.question .operator').html(operator);
 					$('.question .result').html('?');
 					$('.question .result').data('result', result);
+					$('.answer li').hide();
+					$('.answer li:eq('+result+')').show();
+					var i = 5;
+					while(i > 0){
+						var wrongResult = Math.round(Math.random() * (maxResult));
+						if(wrongResult != result) {
+							i--;
+							$('.answer li:eq('+wrongResult+')').show();
+						}
+					}
+
 					return {
 						operator: operator,
 						firstNum: firstNum,
@@ -206,7 +218,6 @@
 						result: result
 					}
 				}
-
 			};
 
 			test.init();
